@@ -21,6 +21,9 @@ jobs:
       # Check out the code from the repository.
         uses: actions/checkout@v2
 
+      - name: Remove existing mocha binary
+        run: rm -f ./backend/node_modules/.bin/mocha || true
+
       # Set up a Node.js environment using the specified node version.
       - name: Setup NodeJS
         uses: actions/setup-node@v2
@@ -37,12 +40,12 @@ jobs:
 
       # Install the dependencies.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: ./backend/
 
       # Run the linter.
       - name: Run lint
-        run: npx eslint --force
+        run: npx eslint
         working-directory: ./backend/
 
       # Send a console message at completion.
