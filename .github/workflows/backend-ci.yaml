@@ -42,7 +42,7 @@ jobs:
 
       # Run the linter.
       - name: Run lint
-        run: npx eslint
+        run: npx eslint --force
         working-directory: ./backend/
 
       # Send a console message at completion.
