@@ -32,9 +32,10 @@ jobs:
       #Perform a cache action to restore cache before dependency install
       - name: Cache Node.js modules
         uses: actions/cache@v2
+        working-directory: ./../../backend/
         with:
           path: ~/.npm  # Path to cache
-          key: ${{ runner.os }}-npm-${{ hashFiles('../../backend/package-lock.json') }}  # Cache key
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}  # Cache key
           restore-keys: |
             ${{ runner.os }}-npm-
 
@@ -70,9 +71,10 @@ jobs:
       # Perform a cache action to restore cache before dependency install
       - name: Cache Node.js modules
         uses: actions/cache@v2
+        working-directory: ./../../backend/
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('../../backend/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
       
@@ -105,9 +107,10 @@ jobs:
       # Perform a cache action to restore cache before dependency install
       - name: Cache Node.js modules
         uses: actions/cache@v2
+        working-directory: ./../../backend/
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('../../backend/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/backend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
