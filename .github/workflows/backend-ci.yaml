@@ -34,17 +34,19 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm  # Path to cache
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}  # Cache key
+          key: ${{ runner.os }}-npm-${{ hashFiles('../../backend/package-lock.json') }}  # Cache key
           restore-keys: |
             ${{ runner.os }}-npm-
 
       # Install the dependencies.
       - name: Install dependencies
         run: npm install
+        working-directory: ./../../backend/
 
       # Run the linter.
       - name: Run lint
         run: npm run lint
+        working-directory: ./../../backend/
 
       # Send a console message at completion.
       - run: |
@@ -70,17 +72,19 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('../../backend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
       
       #Install dependencies
       - name: Install dependencies
         run: npm install
+        working-directory: ./../../backend/
 
       # Run the tests.
       - name: Run tests
         run: npm run test
+        working-directory: ./../../backend/
 
 #Build Job
   build:
@@ -110,7 +114,9 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: npm install
+        working-directory: ./../../backend/ 
 
       # Run the npm run test command
       - name: Build application
         run: npm run test
+        working-directory: ./../../backend/
