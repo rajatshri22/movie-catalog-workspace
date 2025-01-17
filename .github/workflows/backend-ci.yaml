@@ -45,7 +45,8 @@ jobs:
 
       # Run the linter.
       - name: Run lint
-        run: npm run lint
+        run: npx eslint
+        working-directory: ./backend/
 
       # Send a console message at completion.
       - run: |
@@ -83,6 +84,7 @@ jobs:
       # Run the tests.
       - name: Run tests
         run: npm run test
+        working-directory: ./backend/
 
 #Build Job
   build:
@@ -117,3 +119,4 @@ jobs:
       # Run the npm run test command
       - name: Build application
         run: npm run test
+        working-directory: ./backend/
