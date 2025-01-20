@@ -40,13 +40,13 @@ jobs:
 
       # Install the dependencies.
       - name: Install dependencies
-        run: npm install
-        working-directory: ./backend
+        run: npm ci
+        working-directory: ./backend/
 
       # Run the linter.
       - name: Run lint
         run: npx eslint
-        working-directory: ./backend
+        working-directory: ./backend/
 
       # Send a console message at completion.
       - run: |
