@@ -122,6 +122,11 @@ jobs:
         run: npm ci
         working-directory: ./backend/ 
 
+      # Start Application
+      - name: Start dependencies
+        run: npm run start
+        working-directory: ./backend/ 
+
       # Run the npm run test command
       - name: Build application
         run: npm run build
