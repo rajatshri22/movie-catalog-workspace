@@ -38,7 +38,7 @@ jobs:
       # Install the dependencies.
       - name: Install dependencies
         run: npm ci
-        working-directory: ./backend/
+        working-directory: .github/workflows/backend
 
       # Run the linter.
       - name: Run lint
