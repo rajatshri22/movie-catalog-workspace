@@ -4,8 +4,8 @@
     "description": "Node.js backend for Uda-Craft app",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
-        "test": "mocha test.js",
+        "start": "node server.js",
+        "test": "jest",
         "lint": "eslint .",
         "build": "webpack --mode production"
     },
