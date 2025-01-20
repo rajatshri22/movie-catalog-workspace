@@ -98,6 +98,14 @@ jobs:
       #- name: Build application
       #  run: npm run build
       #  working-directory: .github/workflows/frontend 
+      - name: Build Docker image
+        run: |
+          docker build --build-arg REACT_APP_MOVIE_API_URL=http://localhost:5000 --tag mp-frontend:latest .
+        working-directory: .github/workflows/frontend  # Specify the working directory where Dockerfile is located
+
+      - name: Run Docker container
+        run: |
+          docker run --name mp-frontend -p 3000:3000 -d mp-frontend
 
       - name: Build application
         run: REACT_APP_MOVIE_API_URL=http://localhost:5000 npm start
