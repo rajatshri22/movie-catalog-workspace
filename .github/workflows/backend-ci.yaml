@@ -31,8 +31,8 @@ jobs:
           node-version: 14
 
     # Init the npm.
-      - name: Initiallise dependencies
-        run: rm -rf node_modules && npm cache clean --force
+#      - name: Initiallise dependencies
+ #       run: rm -rf node_modules && npm cache clean --force
 
 
       # Install the dependencies.
@@ -43,7 +43,7 @@ jobs:
       # Run the linter.
       - name: Run lint
         run: npx eslint
-      #  working-directory: ./backend/
+        working-directory: .github/workflows/backend
 
       # Send a console message at completion.
       - run: |
