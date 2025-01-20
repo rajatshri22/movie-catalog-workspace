@@ -17,7 +17,7 @@ jobs:
     # Check out the code from the repository.
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
     # This will help you verify the directory structure  
       - name: List files in the working directory
         run: ls -R ./  
@@ -39,7 +39,7 @@ jobs:
     
     #Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: ./frontend  
 
       # Run the linter.
