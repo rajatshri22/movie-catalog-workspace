@@ -32,7 +32,7 @@ jobs:
     # Init the npm.
       - name: Initiallise dependencies
         run: npm init
-        working-directory: ./backend/
+
 
       # Install the dependencies.
       - name: Install dependencies
