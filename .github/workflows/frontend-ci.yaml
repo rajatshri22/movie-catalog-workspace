@@ -115,5 +115,3 @@ jobs:
         run: |
           npx http-server ./frontend/ -p 8080 &  # Serve the index.html file
           sleep 5  # Wait for the server to start
-
-          
