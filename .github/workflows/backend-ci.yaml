@@ -33,7 +33,7 @@ jobs:
 
       # Install the dependencies.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: backend/
 
       # Run the linter.
