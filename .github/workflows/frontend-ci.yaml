@@ -36,12 +36,12 @@ jobs:
     #Install dependencies
       - name: Install dependencies
         run: npm ci
-        working-directory: ./frontend/  
+        working-directory: frontend/  
 
       # Run the linter.
       - name: Run lint
         run: npx eslint
-        working-directory: ./frontend/
+        working-directory: frontend/
 
 
       # Test Job Setup.
