@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout code
       # Check out the code from the repository.
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Remove existing mocha binary
         run: rm -f ./backend/node_modules/.bin/mocha || true
