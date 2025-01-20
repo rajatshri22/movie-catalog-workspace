@@ -35,7 +35,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '14' 
+          node-version: '16' 
     
     #Install dependencies
       - name: Install dependencies
@@ -61,7 +61,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       #Install dependencies
       - name: Install dependencies
@@ -87,7 +87,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       # Install dependencies
       - name: Install dependencies
@@ -96,7 +96,7 @@ jobs:
 
       # Run the npm run build command
       - name: Build application
-        run: npm run test
+        run: npm run build
         working-directory: .github/workflows/frontend 
 
       - name: Serve application

@@ -121,7 +121,7 @@ jobs:
 
       # Run build applciation command
       - name: Build application
-        run: npm run build
+        run: npm run test
         working-directory: .github/workflows/backend
 
       # Run Deploy to Server command
