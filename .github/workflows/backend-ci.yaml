@@ -29,9 +29,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+
     # Init the npm.
       - name: Initiallise dependencies
-        run: npm init
+        run: rm -rf node_modules && npm cache clean --force
 
 
       # Install the dependencies.
