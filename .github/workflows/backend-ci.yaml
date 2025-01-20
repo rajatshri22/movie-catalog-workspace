@@ -124,5 +124,5 @@ jobs:
 
       # Run the npm run test command
       - name: Build application
-        run: npm run test
+        run: npm run build
         working-directory: ./backend/

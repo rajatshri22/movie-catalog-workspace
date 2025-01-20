@@ -14,76 +14,90 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+    # Check out the code from the repository.
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Perform a cache action to restore cache before dependency install
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm  # Path to cache
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}  # Cache key
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('/backend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
-
+      
+      # Set up a Node.js environment using the specified node version.
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Specify your Node.js version
-
+          node-version: '14' 
+    
+    #Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        working-directory: ./frontend/  
 
+      # Run the linter.
       - name: Run lint
-        run: npm run lint
+        run: npx eslint
+        working-directory: ./frontend/
 
+
+      # Test Job Setup.
   test:
     runs-on: ubuntu-latest
     needs: lint
     steps:
+      # Check out the code from the repository.
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
+      # Set up a Node.js environment using the specified node version.
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: 14
 
+      #Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        working-directory: ./frontend/
 
+      # Run the tests.
       - name: Run tests
         run: npm run test
+        working-directory: ./frontend/
 
+#Build Job
   build:
+  #job should only run after the first 2 succeed
     runs-on: ubuntu-latest
     needs: [lint, test]
     steps:
+      #  Checkout code
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
+      # Setup NodeJS
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: 14
 
+      # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        working-directory: ./frontend/ 
 
+      # Run the npm run build command
       - name: Build application
         run: npm run build
+        working-directory: ./frontend/  # Specify the working directory
+
+      - name: Serve application
+        run: |
+          npx http-server ./frontend/ -p 8080 &  # Serve the index.html file
+          sleep 5  # Wait for the server to start
+
+          
