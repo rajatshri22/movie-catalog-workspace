@@ -65,7 +65,7 @@ jobs:
 
       #Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: .github/workflows/frontend 
 
       # Run the tests.
@@ -91,7 +91,7 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: .github/workflows/frontend 
 
       # Run the npm run build command
