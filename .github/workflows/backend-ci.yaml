@@ -120,14 +120,15 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: npm ci
-        working-directory: ./backend/ 
+        working-directory: ./backend 
 
-      # Start Application
-      - name: Start dependencies
-        run: npm run start
-        working-directory: ./backend/ 
-
-      # Run the npm run test command
+      # Run build applciation command
       - name: Build application
         run: npm run build
-        working-directory: ./backend/
+        working-directory: ./backend
+
+      # Run Deploy to Server command
+      - name: Deploy to Server
+        run: |
+          echo "Deploying to server..."
+          # Add your deployment commands here
