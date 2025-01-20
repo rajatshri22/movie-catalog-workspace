@@ -95,10 +95,14 @@ jobs:
         working-directory: .github/workflows/frontend 
 
       # Run the npm run build command
-      - name: Build application
-        run: npm run build
-        working-directory: .github/workflows/frontend 
+      #- name: Build application
+      #  run: npm run build
+      #  working-directory: .github/workflows/frontend 
 
+      - name: Build application
+        run: REACT_APP_MOVIE_API_URL=http://localhost:5000 npm start
+        working-directory: .github/workflows/frontend
+      
       - name: Serve application
         run: |
           npx http-server ./frontend/ -p 8080 &  # Serve the index.html file
