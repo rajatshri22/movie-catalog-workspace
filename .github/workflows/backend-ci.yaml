@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout code
       # Check out the code from the repository.
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Remove existing mocha binary
         run: rm -f ./backend/node_modules/.bin/mocha || true
@@ -29,18 +29,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      #Perform a cache action to restore cache before dependency install
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm  # Path to cache
-          key: ${{ runner.os }}-npm-${{ hashFiles('/backend/package-lock.json') }}  # Cache key
-          restore-keys: |
-            ${{ runner.os }}-npm-
+
 
       # Install the dependencies.
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: ./backend/
 
       # Run the linter.
